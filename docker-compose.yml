@@ -1,0 +1,21 @@
+p-drum:
+    build: .
+    container_name: "p-drum"
+    ports:
+        - '8080:8080'
+    environment:
+        - PORT=8080
+    volumes:
+        - .:/home/app/p-drum
+        - /home/app/p-drum/node_modules
+        - www:/home/app/p-drum/out
+nginx-proxy:
+    image: nginx
+    container_name: "nginx"
+    ports:
+        - '8081:8081'
+    volumes:
+        - ./nginx:/etc/nginx/conf.d:ro
+        - www:/www/app/:ro
+    links:
+        - 'p-drum'
