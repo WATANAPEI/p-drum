@@ -38,14 +38,6 @@ module.exports = {
                 ],
                 exclude: /node_modules/
             },
-            {
-                test: /\.txt$/,
-                use: [
-                    {
-                        loader: "raw-loader"
-                    }
-                   ],
-            },
             ],
     },
     plugins: [

@@ -14,3 +14,7 @@ npm-debug.log
 .firebase
 .firebaserc
 firebase.json
+
+# materials
+audio
+img
