@@ -1,0 +1,23 @@
+#button-div {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #28c;
+}
+
+@keyframes r1 {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#play-button{
+    border-radius: 100%;
+    border: none;
+}
+
+#peenuts-img {
+    animation: r1 10s linear infinite;
+    animation-play-state: paused;
+    border-radius:100%;
+}
