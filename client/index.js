@@ -11,7 +11,7 @@ loadButtonElem.addEventListener('click', () => {
     bufferLoader = new BufferLoader(
         context,
         [
-            'http://localhost:3000/audio/test.mp3'
+            'http://localhost:80/audio/test.mp3'
         ],
         finishedLoading
     );
