@@ -6,7 +6,17 @@ var bufferLoader;
 var sourceList = new Array();
 
 var loadButtonElem = document.getElementById('load-button');
+
+function erasePopup(){
+    let popupElems = document.getElementsByClassName('popup');
+    for(let i=0; i<popupElems.length; i++){
+        popupElems[i].style.display = 'none'
+    }
+}
+
 loadButtonElem.addEventListener('click', () => {
+
+    erasePopup();
     context = new AudioContext();
     context.onstatechange = (e) => {
             console.log(`context.state:${context.state}`);
@@ -17,7 +27,6 @@ loadButtonElem.addEventListener('click', () => {
             'http://localhost:3000/audio/test01.mp3',
             'http://localhost:3000/audio/test02.mp3',
             'http://localhost:3000/audio/test03.mp3',
-
 
         ],
         finishedLoading
