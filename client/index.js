@@ -57,5 +57,7 @@ function audio_control(){
     console.log('playing')
     console.log(`sourceList length: ${sourceList.length}`)
     console.log(`context.AudioContextState:${context.state}`);
-    sourceList.shift().start(0);
+    if(sourceList.length != 0){
+        sourceList.shift().start(0);
+    }
 }
