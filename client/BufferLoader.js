@@ -15,10 +15,9 @@ export default class BufferLoader{
             .catch((e) => {console.log(`error: $(e)`)})
             .then((buffer) => { return this.context.decodeAudioData(buffer);})
             .then((decodeData) => {
-                this.bufferList[index] = decodeData;
-                if(++this.loadCount == this.urlList.length)
+                this.bufferList.push(decodeData);
+                //if(++this.loadCount == this.urlList.length)
                     this.onload(this.bufferList);
-                console.log(`No. ${index} is loaded!`);
             })
     }
     load(){

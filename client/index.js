@@ -3,15 +3,22 @@ import BufferLoader from './BufferLoader';
 
 var context;
 var bufferLoader;
-var source;
+var sourceList = new Array();
 
 var loadButtonElem = document.getElementById('load-button');
 loadButtonElem.addEventListener('click', () => {
     context = new AudioContext();
+    context.onstatechange = (e) => {
+            console.log(`context.state:${context.state}`);
+    }
     bufferLoader = new BufferLoader(
         context,
         [
-            'http://localhost:80/audio/test.mp3'
+            'http://localhost:3000/audio/test01.mp3',
+            'http://localhost:3000/audio/test02.mp3',
+            'http://localhost:3000/audio/test03.mp3',
+
+
         ],
         finishedLoading
     );
@@ -21,9 +28,12 @@ loadButtonElem.addEventListener('click', () => {
 // do nothing now
 function finishedLoading(bufferList){
 
-    source = context.createBufferSource();
-    source.buffer = bufferList[0];
+    console.log(`buffer loaded! buffer length:${bufferList.length}`);
+    let source = context.createBufferSource();
+    source.buffer = bufferList.shift();
     source.connect(context.destination);
+    sourceList.push(source);
+    console.log(`sourceList length: ${sourceList.length}`);
 }
 
 var peenutsImgElem = document.getElementById('peenuts-img');
@@ -45,5 +55,7 @@ function rotate_control(){
 }
 function audio_control(){
     console.log('playing')
-    source.start(0);
+    console.log(`sourceList length: ${sourceList.length}`)
+    console.log(`context.AudioContextState:${context.state}`);
+    sourceList.shift().start(0);
 }
