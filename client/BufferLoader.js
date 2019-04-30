@@ -17,7 +17,7 @@ export default class BufferLoader{
             .then((decodeData) => {
                 this.bufferList.push(decodeData);
                 //if(++this.loadCount == this.urlList.length)
-                    this.onload(this.bufferList);
+                    this.onload(this.bufferList, index);
             })
     }
     load(){

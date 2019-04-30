@@ -17,7 +17,7 @@
 }
 
 #peenuts-img {
-    animation: r1 10s linear infinite;
+    animation: r1 3s linear infinite;
     animation-play-state: paused;
     border-radius:100%;
 }
