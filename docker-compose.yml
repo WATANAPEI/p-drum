@@ -13,7 +13,7 @@ nginx-proxy:
     image: nginx
     container_name: "nginx"
     ports:
-        - '8081:8081'
+        - '80:80'
     volumes:
         - ./nginx:/etc/nginx/conf.d:ro
         - www:/www/app/:ro
