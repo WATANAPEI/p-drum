@@ -18,22 +18,27 @@ function erasePopup(){
         popupElems[i].style.display = 'none'
     }
 }
+function getUrlList(){
+    return(
+        [
+            'http://localhost:3000/audio/test01.mp3',
+            'http://localhost:3000/audio/test02.mp3',
+            'http://localhost:3000/audio/test03.mp3',
 
+        ]
+    )
+}
 loadButtonElem.addEventListener('click', () => {
 
     erasePopup();
+    let urlList = getUrlList();
     context = new AudioContext();
     context.onstatechange = (e) => {
             console.log(`context.state:${context.state}`);
     }
     bufferLoader = new BufferLoader(
         context,
-        [
-            'http://localhost:3000/audio/test01.mp3',
-            'http://localhost:3000/audio/test02.mp3',
-            'http://localhost:3000/audio/test03.mp3',
-
-        ],
+        urlList,
         finishedLoading
     );
     bufferLoader.load();
@@ -77,8 +82,9 @@ function rotate_start(){
 
     /*elem.classList.add("do-rotate");
     elem.classList.remove("stop-rotate");*/
-        if(elem.style.animationPlayState== 'paused'||
-        elem.style.animationPlayState == ''){
+        if((elem.style.animationPlayState== 'paused'||
+            elem.style.animationPlayState == '') &&
+        sourceList.length != 0){
         elem.style.animationPlayState='running'
     }
 }
