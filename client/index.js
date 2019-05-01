@@ -18,21 +18,34 @@ function erasePopup(){
         popupElems[i].style.display = 'none'
     }
 }
-function getUrlList(){
-    return(
+async function getUrlList(){
+    let response = await fetch('http://localhost:3000/audio/audioList.json');
+    let json = await response.json();
+    let urlList = [];
+    for(let ele of json.audios){
+        urlList.push(ele.path)
+    }
+    console.log(`urlList: ${urlList}`)
+    return urlList;
+}
+//.catch((error) => console.error(error))
+        /*    return(
         [
             'http://localhost:3000/audio/test01.mp3',
             'http://localhost:3000/audio/test02.mp3',
             'http://localhost:3000/audio/test03.mp3',
 
         ]
-    )
-}
-loadButtonElem.addEventListener('click', () => {
+    )*/
+//}
+loadButtonElem.addEventListener('click',clickLoadButton);
+
+async function clickLoadButton(){
 
     erasePopup();
-    let urlList = getUrlList();
+    let urlList = await getUrlList();
     context = new AudioContext();
+    console.log(`urlList2: ${urlList}`)
     context.onstatechange = (e) => {
             console.log(`context.state:${context.state}`);
     }
@@ -42,7 +55,7 @@ loadButtonElem.addEventListener('click', () => {
         finishedLoading
     );
     bufferLoader.load();
-});
+};
 
 function finishedLoading(bufferList, index){
 

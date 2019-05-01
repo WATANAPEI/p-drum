@@ -1,0 +1,57 @@
+Arguments: 
+  /usr/bin/node /usr/share/yarn/bin/yarn.js install
+
+PATH: 
+  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+
+Yarn version: 
+  1.15.2
+
+Node version: 
+  8.10.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/express: ETIMEDOUT
+      at Timeout._onTimeout (/usr/share/yarn/lib/cli.js:130201:19)
+      at ontimeout (timers.js:482:11)
+      at tryOnTimeout (timers.js:317:5)
+      at Timer.listOnTimeout (timers.js:277:5)
+
+npm manifest: 
+  {
+    "name": "p-drum",
+    "version": "0.0.1",
+    "private": true,
+    "devDependencies": {
+      "@babel/core": "^7.4.0",
+      "@babel/cli": "^7.4.0",
+      "babel-loader": "^8.0.5",
+      "@babel/preset-env": "^7.3.1",
+      "@babel/polyfil": "^7.4.4",
+      "webpack": "^4.30.0",
+      "webpack-cli": "^3.3.1",
+      "webpack-dev-server": "^3.3.1",
+      "html-loader": "^0.5.5",
+      "html-webpack-plugin": "^3.2.0",
+      "css-loader": "^2.1.1",
+      "style-loader": "^0.23.1"
+    },
+    "dependencies": {
+      "express": "^4.14.0",
+      "yarn": "^1.15.2"
+    },
+    "scripts": {
+      "dev": "webpack-dev-server",
+      "build": "webpack --config webpack.config.js",
+      "test": "echo \"Error: notest specified\" && exit 1"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

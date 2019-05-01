@@ -1,4 +1,5 @@
 const express = require('express');
+const audioList = require('./audio/audioList.json')
 const app = express();
 const PORT =3000;
 

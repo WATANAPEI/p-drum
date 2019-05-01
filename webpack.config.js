@@ -5,7 +5,7 @@ const path = require('path');
 module.exports = {
     mode: 'production',
     entry: {
-        js: path.resolve(__dirname, './client/index.js')
+        js: ['@babel/polyfill', path.resolve(__dirname, './client/index.js')]
     },
     output: {
         path: path.resolve(__dirname, './out'),
