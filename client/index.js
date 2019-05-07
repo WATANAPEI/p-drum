@@ -19,7 +19,7 @@ function erasePopup(){
     }
 }
 async function getUrlList(){
-    let response = await fetch('http://localhost:3000/audio/audioList.json');
+    let response = await fetch('./audio/audioList.json');
     let json = await response.json();
     let urlList = [];
     for(let ele of json.audios){
