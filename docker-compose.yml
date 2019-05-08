@@ -1,8 +1,20 @@
-nginx-proxy:
-    image: nginx
-    container_name: "nginx"
-    ports:
-        - '80:80'
-    volumes:
-        - ./nginx:/etc/nginx/conf.d:ro
-        - ./out:/www/app/p-drum:ro
+version: "3.7"
+services:
+    nginx-proxy:
+        image: nginx
+        container_name: "nginx"
+        ports:
+            - '443:443'
+        volumes:
+            - type: bind
+              source: ./nginx
+              target: /etc/nginx/conf.d
+              read_only: true
+            - type: bind
+              source: ./out
+              target: /www/app/p-drum
+              read_only: true
+            - type: bind
+              source: /etc/letsencrypt/
+              target: /etc/letsencrypt/
+              read_only: true
