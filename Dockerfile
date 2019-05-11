@@ -19,6 +19,6 @@ COPY . $HOME/p-drum
 RUN chown -R app:app $HOME/*
 USER app
 
-CMD ["yarn", "dev"]
+CMD ["tail", "-f", "/dev/null"]
 
 
