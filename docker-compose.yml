@@ -7,6 +7,9 @@ services:
           - type: bind
             source: ./out
             target: /www/app/p-drum
+          - type: volume
+            source: p-drum-node-modules
+            target: /home/app/p-drum/node_modules
 
   nginx-proxy:
       image: nginx
@@ -20,7 +23,6 @@ services:
           - type: bind
             source: ./nginx
             target: /etc/nginx/conf.d
-            read_only: true
           - type: bind
             source: ./out
             target: /www/app/p-drum
@@ -33,3 +35,5 @@ services:
       depends_on:
           - bundle-build
 
+volumes:
+    p-drum-node-modules:
