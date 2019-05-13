@@ -4,9 +4,9 @@ services:
       build: .
       container_name: "bundle-build"
       volumes:
-          - type: bind
-            source: ./out
-            target: /www/app/p-drum
+          - type: volume
+            source: out
+            target: /home/app/p-drum/out
           - type: volume
             source: p-drum-node-modules
             target: /home/app/p-drum/node_modules
@@ -23,8 +23,8 @@ services:
           - type: bind
             source: ./nginx
             target: /etc/nginx/conf.d
-          - type: bind
-            source: ./out
+          - type: volume
+            source: out
             target: /www/app/p-drum
             read_only: true
           - type: bind
@@ -38,3 +38,4 @@ services:
 
 volumes:
     p-drum-node-modules:
+    out:

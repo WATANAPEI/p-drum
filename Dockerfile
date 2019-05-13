@@ -6,6 +6,7 @@ ENV HOME=/home/app
 
 COPY package.json webpack* $HOME/p-drum/
 COPY client $HOME/p-drum/client
+COPY out $HOME/p-drum/out
 
 RUN chown -R app:app $HOME/*
 
