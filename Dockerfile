@@ -14,10 +14,10 @@ WORKDIR $HOME/p-drum
 RUN yarn install
 RUN yarn build
 
-USER root
-COPY . $HOME/p-drum
-RUN chown -R app:app $HOME/*
-USER app
+#USER root
+# COPY . $HOME/p-drum
+#RUN chown -R app:app $HOME/*
+#USER app
 
 CMD ["tail", "-f", "/dev/null"]
 
