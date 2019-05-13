@@ -4,7 +4,7 @@ RUN useradd --user-group --create-home --shell /bin/false app
 
 ENV HOME=/home/app
 
-COPY package.json webpack.config.js $HOME/p-drum/
+COPY package.json webpack* $HOME/p-drum/
 COPY client $HOME/p-drum/client
 
 RUN chown -R app:app $HOME/*
