@@ -10,6 +10,9 @@ services:
           - type: volume
             source: p-drum-node-modules
             target: /home/app/p-drum/node_modules
+          - type: volume
+            source: yarn-cache
+            target: /home/app/.cache/yarn/v4
 
   nginx-proxy:
       image: nginx
@@ -39,3 +42,4 @@ services:
 volumes:
     p-drum-node-modules:
     out:
+    yarn-cache:
