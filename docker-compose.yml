@@ -1,8 +1,8 @@
 version: "3.7"
 services:
-  bundle-build:
+  p-build:
       build: .
-      container_name: "bundle-build"
+      container_name: "p-build"
       volumes:
           - type: volume
             source: out
@@ -13,33 +13,15 @@ services:
           - type: volume
             source: yarn-cache
             target: /home/app/.cache/yarn/v4
-
-  nginx-proxy:
-      image: nginx
-      container_name: "nginx"
-      ports:
-          - '443:443'
-      environment:
-          - SSL_CRT_PATH="${SSL_CRT_PATH}"
-          - SSL_KEY_PATH="${SSL_KEY_PATH}"
-      volumes:
-          - type: bind
-            source: ./nginx
-            target: /etc/nginx/conf.d
-          - type: volume
-            source: out
-            target: /www/app/p-drum
-            read_only: true
-          - type: bind
-            source: /etc/letsencrypt/
-            target: /etc/letsencrypt/
-            read_only: true
-      command: /bin/sh -c "envsubst '$$SSL_CRT_PATH$$SSL_KEY_PATH' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
-      restart: unless-stopped
-      depends_on:
-          - bundle-build
+      networks:
+          - mynet
 
 volumes:
     p-drum-node-modules:
-    out:
     yarn-cache:
+    out:
+        external: true
+
+networks:
+    mynet:
+        external: true
