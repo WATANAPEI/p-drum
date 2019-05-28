@@ -9,7 +9,6 @@ COPY package.json webpack* $HOME/p-drum/
 
 RUN chown -R app:app $HOME/* 
 
-USER app
 RUN yarn install
 
 COPY client $HOME/p-drum/client
