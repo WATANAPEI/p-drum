@@ -6,7 +6,7 @@ services:
       volumes:
           - type: volume
             source: out
-            target: /home/app/p-drum/out
+            target: /www/app/p-drum
       networks:
           - mynet
 
