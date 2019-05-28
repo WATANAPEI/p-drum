@@ -8,7 +8,7 @@ module.exports = {
         js: ['@babel/polyfill', path.resolve(__dirname, './client/index.js')]
     },
     output: {
-        path: path.resolve(__dirname, './out'),
+        path: path.resolve('/www', 'app', 'p-drum'),
         filename: 'bundle.js'
     },
     resolve: {
