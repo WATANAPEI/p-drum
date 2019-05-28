@@ -7,18 +7,10 @@ services:
           - type: volume
             source: out
             target: /home/app/p-drum/out
-          - type: volume
-            source: p-drum-node-modules
-            target: /home/app/p-drum/node_modules
-          - type: volume
-            source: yarn-cache
-            target: /home/app/.cache/yarn/v4
       networks:
           - mynet
 
 volumes:
-    p-drum-node-modules:
-    yarn-cache:
     out:
         external: true
 
