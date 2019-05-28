@@ -8,7 +8,7 @@ module.exports = merge(base,{
     mode: 'development',
     devtool: 'eval-source-map',
     devServer: {
-      contentBase: path.resolve(__dirname, './out'),
+      contentBase: '/www/app/p-drum',
       port: 8080,
       compress: true,
       inline: true,
