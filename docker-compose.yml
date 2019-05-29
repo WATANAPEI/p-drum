@@ -5,13 +5,13 @@ services:
       container_name: "p-build"
       volumes:
           - type: volume
-            source: out
-            target: /www/app/p-drum
+            source: public
+            target: /www/app
       networks:
           - mynet
 
 volumes:
-    out:
+    p-drum:
         external: true
 
 networks:
