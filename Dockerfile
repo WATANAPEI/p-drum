@@ -12,13 +12,13 @@ RUN chown -R app:app $HOME/*
 RUN yarn install
 
 COPY client $HOME/p-drum/client
-RUN yarn build
+#RUN yarn build
 #USER root
 # COPY . $HOME/p-drum
 #RUN chown -R app:app $HOME/*
 #USER app
 
-CMD ["tail", "-f", "/dev/null"]
-#CMD ["yarn", "build"]
+#CMD ["tail", "-f", "/dev/null"]
+CMD ["yarn", "build"]
 
 
